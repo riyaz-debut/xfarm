@@ -1,0 +1,1 @@
+[34m2022-12-12 16:01:56.440 IST [chaincodeCmd] ClientWait -> INFO 001[0m txid [76126bb636760baedc7f71efb0c50dd07d85c31acc8106bf3261d5ebc21dd4a5] committed with status (VALID) at peer0.org2.xfarm.com:9051

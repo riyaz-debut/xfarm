@@ -1,0 +1,2 @@
+[34m2022-12-12 16:02:41.526 IST [chaincodeCmd] ClientWait -> INFO 001[0m txid [a32bcf4e808e3e8086d63e1e2476c09be0b5bbbe39ea8426a2c3f53a45d0d96d] committed with status (VALID) at peer0.org2.xfarm.com:9051
+[34m2022-12-12 16:02:41.527 IST [chaincodeCmd] ClientWait -> INFO 002[0m txid [a32bcf4e808e3e8086d63e1e2476c09be0b5bbbe39ea8426a2c3f53a45d0d96d] committed with status (VALID) at peer0.org1.xfarm.com:7051

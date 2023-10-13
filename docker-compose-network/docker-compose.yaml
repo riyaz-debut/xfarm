@@ -1,0 +1,114 @@
+
+version: '2'
+
+networks:
+  netname:
+    name: xfarm-network
+
+services:
+  peer0.testorg.com:
+    extends:
+      file: peer-base.yaml
+      service: peer
+    container_name: peer0.testorg.com
+    image: hyperledger/fabric-peer:2.4.4
+    environment:
+      - CORE_VM_ENDPOINT=unix:///host/var/run/docker.sock
+      - CORE_VM_DOCKER_HOSTCONFIG_NETWORKMODE=xfarm-network
+      - FABRIC_LOGGING_SPEC=INFO
+      - CORE_PEER_TLS_ENABLED=true
+      - CORE_PEER_PROFILE_ENABLED=true
+      - CORE_PEER_TLS_CERT_FILE=/etc/hyperledger/fabric/tls/server.crt
+      - CORE_PEER_TLS_KEY_FILE=/etc/hyperledger/fabric/tls/server.key
+      - CORE_PEER_TLS_ROOTCERT_FILE=/etc/hyperledger/fabric/tls/ca.crt
+      - CORE_PEER_ID=peer0.testorg.com
+      - CORE_PEER_ADDRESS=peer0.testorg.com:7051
+      - CORE_PEER_LISTENADDRESS=0.0.0.0:7051
+      - CORE_PEER_CHAINCODEADDRESS=peer0.testorg.com:7052
+      - CORE_PEER_CHAINCODELISTENADDRESS=0.0.0.0:7052
+      - CORE_PEER_GOSSIP_EXTERNALENDPOINT=peer0.testorg.com:7051
+      - CORE_PEER_GOSSIP_BOOTSTRAP=peer1.testorg.com:8051
+      - CORE_PEER_LOCALMSPID=testorgMSP
+      - CORE_LEDGER_STATE_STATEDATABASE=CouchDB
+      - CORE_LEDGER_STATE_COUCHDBCONFIG_COUCHDBADDRESS=couchdb-peer0:5984
+      - CORE_LEDGER_STATE_COUCHDBCONFIG_USERNAME=admin
+      - CORE_LEDGER_STATE_COUCHDBCONFIG_PASSWORD=adminpw
+    volumes:
+        - /var/run/docker.sock:/host/var/run/docker.sock
+        - ./organizations/peerOrganizations/testorg.com/peers/peer0.testorg.com/msp:/etc/hyperledger/fabric/msp
+        - ./organizations/peerOrganizations/testorg.com/peers/peer0.testorg.com/tls:/etc/hyperledger/fabric/tls
+        - ./network-data/peer0.testorg.com:/var/hyperledger/production      
+    working_dir: /opt/gopath/src/github.com/hyperledger/fabric/peer
+    command: peer node start
+    ports:
+      - 15051:7051
+    networks:
+      - netname
+    depends_on:
+      - couchdb-peer0  
+
+  peer1.testorg.com:
+    extends:
+      file: peer-base.yaml
+      service: peer
+    container_name: peer1.testorg.com
+    image: hyperledger/fabric-peer:2.4.4
+    environment:
+      - CORE_VM_ENDPOINT=unix:///host/var/run/docker.sock
+      - CORE_VM_DOCKER_HOSTCONFIG_NETWORKMODE=xfarm-network
+      - FABRIC_LOGGING_SPEC=INFO
+      - CORE_PEER_TLS_ENABLED=true
+      
+      - CORE_PEER_TLS_CERT_FILE=/etc/hyperledger/fabric/tls/server.crt
+      - CORE_PEER_TLS_KEY_FILE=/etc/hyperledger/fabric/tls/server.key
+      - CORE_PEER_TLS_ROOTCERT_FILE=/etc/hyperledger/fabric/tls/ca.crt
+      - CORE_PEER_ID=peer1.testorg.com
+      - CORE_PEER_ADDRESS=peer1.testorg.com:8051
+      - CORE_PEER_LISTENADDRESS=0.0.0.0:8051
+      - CORE_PEER_CHAINCODEADDRESS=peer1.testorg.com:7052
+      - CORE_PEER_CHAINCODELISTENADDRESS=0.0.0.0:7052
+      - CORE_PEER_GOSSIP_EXTERNALENDPOINT=peer1.testorg.com:8051
+      - CORE_PEER_GOSSIP_BOOTSTRAP=peer0.testorg.com:7051
+      - CORE_PEER_LOCALMSPID=testorgMSP
+      - CORE_LEDGER_STATE_STATEDATABASE=CouchDB
+      - CORE_LEDGER_STATE_COUCHDBCONFIG_COUCHDBADDRESS=couchdb-peer1:5984
+      - CORE_LEDGER_STATE_COUCHDBCONFIG_USERNAME=admin
+      - CORE_LEDGER_STATE_COUCHDBCONFIG_PASSWORD=adminpw
+    volumes:
+        - /var/run/docker.sock:/host/var/run/docker.sock
+        - ./organizations/peerOrganizations/testorg.com/peers/peer1.testorg.com/msp:/etc/hyperledger/fabric/msp
+        - ./organizations/peerOrganizations/testorg.com/peers/peer1.testorg.com/tls:/etc/hyperledger/fabric/tls
+        - ./network-data/peer1.testorg.com:/var/hyperledger/production
+    working_dir: /opt/gopath/src/github.com/hyperledger/fabric/peer
+    command: peer node start
+    ports:
+      - 16051:8051
+    networks:
+      - netname  
+    depends_on:
+      - couchdb-peer1  
+
+  couchdb-peer0:
+    container_name: couchdb-peer0
+    image: couchdb:3.1.1
+
+    environment:
+      - COUCHDB_USER=admin
+      - COUCHDB_PASSWORD=adminpw
+    ports:
+      - 13984:5984
+    networks:
+      - netname 
+
+  couchdb-peer1:
+    container_name: couchdb-peer1
+    image: couchdb:3.1.1
+
+    environment:
+      - COUCHDB_USER=admin
+      - COUCHDB_PASSWORD=adminpw
+    ports:
+      - 14984:5984
+    networks:
+      - netname               
+

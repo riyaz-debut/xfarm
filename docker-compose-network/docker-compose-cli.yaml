@@ -1,0 +1,42 @@
+
+version: '2'
+
+networks:
+  netname:
+    name: xfarm-network
+services:
+  cli:
+    extends:
+      file: peer-base.yaml
+      service: peer
+    container_name: cli
+    image: hyperledger/fabric-tools:latest
+    tty: true
+    stdin_open: true
+    environment:
+      - GOPATH=/opt/gopath
+      - CORE_VM_ENDPOINT=unix:///host/var/run/docker.sock
+      - FABRIC_LOGGING_SPEC=INFO
+    working_dir: /opt/gopath/src/github.com/hyperledger/fabric/peer
+    command: /bin/bash
+    volumes:
+        - /var/run/:/host/var/run/
+        - ../organizations:/opt/gopath/src/github.com/hyperledger/fabric/peer/organizations
+        - ../scripts:/opt/gopath/src/github.com/hyperledger/fabric/peer/scripts/
+        - ../channel-artifacts:/opt/gopath/src/github.com/hyperledger/fabric/peer/channel-artifacts
+    #depends_on:
+      #- orderer.osqo.com
+      #- orderer2.osqo.com
+      #- orderer3.osqo.com
+      # - orderer4.osqo.com
+      # - orderer5.osqo.com
+      # - peer0.osqo.osqo.com
+      # - peer1.osqo.osqo.com
+      # - peer0.bcp.osqo.com
+      # - peer1.bcp.osqo.com
+      # - peer0.esp.osqo.com
+      # - peer1.esp.osqo.com
+      # - peer0.broker.osqo.com
+      # - peer1.broker.osqo.com
+    networks:
+      - netname

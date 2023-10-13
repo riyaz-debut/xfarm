@@ -1,0 +1,6 @@
+Installed chaincodes on peer:
+Package ID: signature-cc_1.0:bdbba4d71ae07483f6f0398e9610ac976289ccf3d3b1bea7071d307aca1b0244, Label: signature-cc_1.0
+Package ID: signature-cc2_1.0:b3d32cb1a2dc6590ab7c1755669f0ff79ad57e1cfba631fe6544a345388baf38, Label: signature-cc2_1.0
+Package ID: signature-cc3_1.0:dac632d261f08229df102860260ab72f0d07be7c27ff9fa94dc8d773ee1dd1e3, Label: signature-cc3_1.0
+Package ID: signature-cc4_1.0:5677481e99e95736ba9b883752e4a2d9901ee088e0e017198bf874e964e98490, Label: signature-cc4_1.0
+Package ID: signature-cc5_1.0:1e5b901db2b64dffae7cae0e3ae52730e5e0737cb34f9da45a3010add4ffe98a, Label: signature-cc5_1.0

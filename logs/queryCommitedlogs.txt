@@ -1,0 +1,2 @@
+Committed chaincode definition for chaincode 'signature-cc5' on channel 'xfarm-channel':
+Version: 1.0, Sequence: 1, Endorsement Plugin: escc, Validation Plugin: vscc, Approvals: [org1MSP: true, org2MSP: true]

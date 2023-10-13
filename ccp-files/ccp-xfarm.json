@@ -1,0 +1,60 @@
+{
+    "name": "${ORG}-xfarm",
+    "version": "1.0.0",
+    "client": {
+        "organization": "${ORG}",
+        "connection": {
+            "timeout": {
+                "peer": {
+                    "endorser": "300"
+                }
+            }
+        }
+    },
+    "organizations": {
+        "${ORG}": {
+            "mspid": "${ORG}MSP",
+            "peers": [
+                "${PEERNAME1}.${ORG}.xfarm.com",
+                "${PEERNAME2}.${ORG}.xfarm.com"
+            ],
+            "certificateAuthorities": [
+                "ca.${ORG}.xfarm.com"
+            ]
+        }
+    },
+    "peers": {
+        "${PEERNAME1}.${ORG}.xfarm.com": {
+            "url": "grpcs://localhost:${P0PORT}",
+            "tlsCACerts": {
+                "pem": "${PEERPEM}"
+            },
+            "grpcOptions": {
+                "ssl-target-name-override": "${PEERNAME1}.${ORG}.xfarm.com",
+                "hostnameOverride": "${PEERNAME1}.${ORG}.xfarm.com"
+            }
+        },   
+        "${PEERNAME2}.${ORG}.xfarm.com": {
+            "url": "grpcs://localhost:${P1PORT}",
+            "tlsCACerts": {
+                "pem": "${PEERPEM}"
+            },
+            "grpcOptions": {
+                "ssl-target-name-override": "${PEERNAME2}.${ORG}.xfarm.com",
+                "hostnameOverride": "${PEERNAME2}.${ORG}.xfarm.com"
+            }
+        }
+    },
+    "certificateAuthorities": {
+        "ca.${ORG}.xfarm.com": {
+            "url": "https://localhost:${CAPORT}",
+            "caName": "ca-${ORG}",
+            "tlsCACerts": {
+                "pem": ["${CAPEM}"]
+            },
+            "httpOptions": {
+                "verify": false
+            }
+        }
+    }
+}

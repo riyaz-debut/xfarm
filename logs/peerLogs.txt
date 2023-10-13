@@ -1,0 +1,16 @@
+[34m2022-12-12 11:18:41.936 IST [channelCmd] InitCmdFactory -> INFO 001[0m Endorser and orderer connections initialized
+[34m2022-12-12 11:18:41.956 IST [cli.common] readBlock -> INFO 002[0m Expect block, but got status: &{NOT_FOUND}
+[34m2022-12-12 11:18:41.959 IST [channelCmd] InitCmdFactory -> INFO 003[0m Endorser and orderer connections initialized
+[34m2022-12-12 11:18:42.526 IST [cli.common] readBlock -> INFO 004[0m Expect block, but got status: &{SERVICE_UNAVAILABLE}
+[34m2022-12-12 11:18:42.534 IST [channelCmd] InitCmdFactory -> INFO 005[0m Endorser and orderer connections initialized
+[34m2022-12-12 11:18:42.737 IST [cli.common] readBlock -> INFO 006[0m Expect block, but got status: &{SERVICE_UNAVAILABLE}
+[34m2022-12-12 11:18:42.748 IST [channelCmd] InitCmdFactory -> INFO 007[0m Endorser and orderer connections initialized
+[34m2022-12-12 11:18:42.951 IST [cli.common] readBlock -> INFO 008[0m Expect block, but got status: &{SERVICE_UNAVAILABLE}
+[34m2022-12-12 11:18:42.958 IST [channelCmd] InitCmdFactory -> INFO 009[0m Endorser and orderer connections initialized
+[34m2022-12-12 11:18:43.160 IST [cli.common] readBlock -> INFO 00a[0m Expect block, but got status: &{SERVICE_UNAVAILABLE}
+[34m2022-12-12 11:18:43.169 IST [channelCmd] InitCmdFactory -> INFO 00b[0m Endorser and orderer connections initialized
+[34m2022-12-12 11:18:43.372 IST [cli.common] readBlock -> INFO 00c[0m Expect block, but got status: &{SERVICE_UNAVAILABLE}
+[34m2022-12-12 11:18:43.379 IST [channelCmd] InitCmdFactory -> INFO 00d[0m Endorser and orderer connections initialized
+[34m2022-12-12 11:18:43.581 IST [cli.common] readBlock -> INFO 00e[0m Expect block, but got status: &{SERVICE_UNAVAILABLE}
+[34m2022-12-12 11:18:43.588 IST [channelCmd] InitCmdFactory -> INFO 00f[0m Endorser and orderer connections initialized
+[34m2022-12-12 11:18:43.795 IST [cli.common] readBlock -> INFO 010[0m Received block: 0

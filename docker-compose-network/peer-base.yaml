@@ -1,0 +1,49 @@
+version: '2'
+
+services:
+  peer:    
+    environment:
+      - CORE_VM_ENDPOINT=unix:///host/var/run/docker.sock
+      # the following setting starts chaincode containers on the same
+      # bridge network as the peers
+      # https://docs.docker.com/compose/networking/      
+      - CORE_VM_DOCKER_HOSTCONFIG_NETWORKMODE=xfarm-network
+      - CORE_LOGGING_LEVEL=INFO
+      - FABRIC_LOGGING_SPEC=INFO
+      #- CORE_LOGGING_LEVEL=DEBUG
+      - CORE_PEER_TLS_ENABLED=true
+      - CORE_PEER_GOSSIP_USELEADERELECTION=true
+      - CORE_PEER_GOSSIP_ORGLEADER=false
+      - CORE_PEER_PROFILE_ENABLED=true
+    # working_dir: /opt/gopath/src/github.com/hyperledger/fabric/peer
+    # command: peer node start
+    extra_hosts:       
+      - test.com:127.0.0.1
+      #- peer0.bcp.osqo.com:13.210.137.148 #HLF 1 instance        
+      #- peer1.bcp.osqo.com:13.210.137.148 #HLF 1 instance
+      #- peer0.osqo.osqo.com:13.210.137.148  #HLF 1 instance
+      #- peer1.osqo.osqo.com:13.210.137.148  #HLF 1 instance  
+      #- orderer.osqo.com:13.210.137.148
+      #- orderer1.osqo.com:13.210.137.148
+      #- orderer2.osqo.com:13.210.137.148
+      #- orderer3.osqo.com:13.210.137.148
+      #- orderer4.osqo.com:13.210.137.148
+      #- orderer5.osqo.com:13.210.137.148 
+      # - peer0.esp.osqo.com:52.63.174.249  #HLF 1 instance  
+      # - peer1.esp.osqo.com:52.63.174.249  #HLF 1 instance  
+      # - peer0.broker.osqo.com:52.63.174.249 #HLF 2 instance        
+      # - peer1.broker.osqo.com:52.63.174.249 #HLF 2 instance
+      # - peer0.broker.osqo.com:192.168.65.0 #LOCAL ENTRIES STARTS HERE
+      # - peer1.broker.osqo.com:192.168.65.0
+      # - peer0.bcp.osqo.com:192.168.65.0
+      # - peer1.bcp.osqo.com:192.168.65.0
+      # - peer0.osqo.osqo.com:192.168.65.0
+      # - peer1.osqo.osqo.com:192.168.65.0
+      # - peer0.esp.osqo.com:192.168.65.0
+      # - peer1.esp.osqo.com:192.168.65.0
+      # - orderer.osqo.com:192.168.65.0
+      # - orderer1.osqo.com:192.168.65.0
+      # - orderer2.osqo.com:192.168.65.0
+      # - orderer3.osqo.com:192.168.65.0
+      # - orderer4.osqo.com:192.168.65.0
+      # - orderer5.osqo.com:192.168.65.0 

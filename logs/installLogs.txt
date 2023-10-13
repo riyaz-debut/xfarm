@@ -1,0 +1,2 @@
+[34m2022-12-12 16:01:51.086 IST [cli.lifecycle.chaincode] submitInstallProposal -> INFO 001[0m Installed remotely: response:<status:200 payload:"\nRsignature-cc5_1.0:1e5b901db2b64dffae7cae0e3ae52730e5e0737cb34f9da45a3010add4ffe98a\022\021signature-cc5_1.0" > 
+[34m2022-12-12 16:01:51.086 IST [cli.lifecycle.chaincode] submitInstallProposal -> INFO 002[0m Chaincode code package identifier: signature-cc5_1.0:1e5b901db2b64dffae7cae0e3ae52730e5e0737cb34f9da45a3010add4ffe98a
